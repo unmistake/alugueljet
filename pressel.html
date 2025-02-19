@@ -36,24 +36,15 @@
     <div class="container">
         <h2>Confirme que você não é um robô</h2>
         <form id="recaptcha-form">
-            <div class="g-recaptcha" data-sitekey="6LfdRdwqAAAAAPhIWOdtyZnJs2r0m9U8AwVHh_c1"></div>
-            <button type="button" onclick="validateRecaptcha()">Continuar</button>
+            <div class="g-recaptcha" data-sitekey="6LfdRdwqAAAAAPhIWOdtyZnJs2r0m9U8AwVHh_c1" data-callback="recaptchaSuccess"></div>
         </form>
     </div>
 
     <script>
-        function validateRecaptcha() {
-            let recaptchaResponse = grecaptcha.getResponse();
-            if (!recaptchaResponse) {
-                alert("Por favor, marque a caixa de verificação.");
-                return;
-            }
-
+        function recaptchaSuccess() {
             let domain = window.location.hostname; // Obtém o domínio atual
             let siteURL = `https://${domain}/index.html`; // Página de destino
-
-            alert("Verificação concluída! Redirecionando...");
-            window.location.href = siteURL;
+            window.location.href = siteURL; // Redireciona automaticamente
         }
     </script>
 
